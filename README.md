@@ -75,6 +75,9 @@ Gatling:
   }
 ```
 
+Debug Gatling:
+https://stackoverflow.com/a/30620194
+
 Notes:
 - If `Dockerfile` has more than one `CMD` instruction, all but last `CMD` instructions are ignored.
 - async-profiler should be run from the host by a privileged user.
