@@ -56,6 +56,25 @@ Run:
 sudo ps -ef | grep "java" | grep "PreserveFramePointer" | grep -v "sbt.ForkMain" | grep -v "grep" | awk '{print $2}' | sudo xargs -I pid /root/async-profiler/profiler.sh -d 60 -f /tmp/title.svg --title title -e itimer pid
 ```
 
+Gatling:
+
+```scala
+  before {
+    proc match {
+      case p if p == error => println(p)
+      case _ =>
+        val list = proc.trim.replaceAll(" +", " ").split(" ")
+        val pid  = list(1)
+
+        println("PID: " + pid)
+
+        val profiler =
+          s"/root/async-profiler/profiler.sh -d $time -f /tmp/$title.svg --title $title -e itimer $pid"
+        profiler.run
+    }
+  }
+```
+
 Notes:
 - If `Dockerfile` has more than one `CMD` instruction, all but last `CMD` instructions are ignored.
 - async-profiler should be run from the host by a privileged user.
