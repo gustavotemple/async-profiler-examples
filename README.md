@@ -58,6 +58,9 @@ sudo ps -ef | grep "java" | grep "PreserveFramePointer" | grep -v "sbt.ForkMain"
 
 Gatling:
 
+- [ConfSupport.scala](ConfSupport.scala)
+- [CommandsSupport.scala](CommandsSupport.scala)
+
 ```scala
   before {
     proc match {
