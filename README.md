@@ -76,7 +76,8 @@ Gatling:
 ```
 
 Debug Gatling:
-https://stackoverflow.com/a/30620194
+- [Runner.scala](Runner.scala)
+- https://stackoverflow.com/a/30620194
 
 Notes:
 - If `Dockerfile` has more than one `CMD` instruction, all but last `CMD` instructions are ignored.
