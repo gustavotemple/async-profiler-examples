@@ -83,7 +83,6 @@ Debug Gatling:
 - https://stackoverflow.com/a/30620194
 
 Notes:
-- If `Dockerfile` has more than one `CMD` instruction, all but last `CMD` instructions are ignored.
 - async-profiler should be run from the host by a privileged user.
 - Make sure that the target container can access `libasyncProfiler.so` by the same absolute path as on the host.
 - `/tmp` directory of Java process should be physically the same directory as `/tmp` of your shell.
