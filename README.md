@@ -56,9 +56,18 @@ Run:
 sudo ps -ef | grep "java" | grep "PreserveFramePointer" | grep -v "sbt.ForkMain" | grep -v "grep" | awk '{print $2}' | sudo xargs -I pid /root/async-profiler/profiler.sh -d 60 -f /tmp/title.svg --title title -e itimer pid
 ```
 
-Gatling:
+Gatling Project:
 
-https://github.com/gustavotemple/gatling-sbt-plugin-demo
+- https://github.com/gustavotemple/gatling-sbt-plugin-demo
+
+AsyncProfiler call:
+
+- https://github.com/gustavotemple/gatling-sbt-plugin-demo/blob/master/src/test/scala/gatling/GatlingTest.scala#L66
+
+Debug Gatling:
+
+- https://github.com/gustavotemple/gatling-sbt-plugin-demo/blob/master/src/test/scala/gatling/GatlingTest.scala#L14
+- https://stackoverflow.com/a/30620194
 
 Notes:
 - async-profiler should be run from the host by a privileged user.
