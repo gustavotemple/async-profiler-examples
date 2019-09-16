@@ -58,29 +58,7 @@ sudo ps -ef | grep "java" | grep "PreserveFramePointer" | grep -v "sbt.ForkMain"
 
 Gatling:
 
-- [ConfSupport.scala](ConfSupport.scala)
-- [CommandsSupport.scala](CommandsSupport.scala)
-
-```scala
-  before {
-    proc match {
-      case p if p == error => println(p)
-      case _ =>
-        val list = proc.trim.replaceAll(" +", " ").split(" ")
-        val pid  = list(1)
-
-        println("PID: " + pid)
-
-        val profiler =
-          s"/root/async-profiler/profiler.sh -d $time -f /tmp/$title.svg --title $title -e itimer $pid"
-        profiler.run
-    }
-  }
-```
-
-Debug Gatling:
-- [Runner.scala](Runner.scala)
-- https://stackoverflow.com/a/30620194
+https://github.com/gustavotemple/gatling-sbt-plugin-demo
 
 Notes:
 - async-profiler should be run from the host by a privileged user.
