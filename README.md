@@ -53,7 +53,10 @@ services:
 Run:
 
 ```console
-sudo ps -ef | grep "java" | grep "PreserveFramePointer" | grep -v "sbt.ForkMain" | grep -v "grep" | awk '{print $2}' | sudo xargs -I pid /root/async-profiler/profiler.sh -d 60 -f /tmp/title.svg --title title -e itimer pid
+sudo ps -ef | grep "java" | grep "PreserveFramePointer" \
+ | grep -v "sbt.ForkMain" | grep -v "grep" \
+ | awk '{print $2}' \
+ | sudo xargs -I pid /root/async-profiler/profiler.sh -d 60 -f /tmp/title.svg --title title -e itimer pid
 ```
 
 Gatling Project:
