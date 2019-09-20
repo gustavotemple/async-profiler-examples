@@ -1,6 +1,6 @@
 # async-profiler-examples
 
-setup_profiler.sh
+[setup_profiler.sh](setup_profiler.sh)
 
 ```sh
 #!/bin/sh
@@ -18,7 +18,7 @@ Run:
 sudo sh ./setup_profiler.sh
 ```
 
-Dockerfile
+[Dockerfile](Dockerfile)
 
 ```Dockerfile
 FROM openjdk:11
@@ -31,7 +31,7 @@ EXPOSE 8080
 CMD ["sh", "-c", "java ${MY_ARGS} -jar my.jar"]
 ```
 
-docker-compose.yml
+[docker-compose.yml](docker-compose.yml)
 
 ```yml
 version: '3'
