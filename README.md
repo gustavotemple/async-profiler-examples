@@ -1,5 +1,14 @@
 # async-profiler-examples
 
+## Build
+
+Run (https://stackoverflow.com/a/52404325):
+```console
+$./gradlew bootJar
+```
+
+## Async Profiler files
+
 [setup_profiler.sh](setup_profiler.sh)
 
 ```sh
@@ -59,7 +68,7 @@ sudo ps -ef | grep "java" | grep "PreserveFramePointer" \
  | sudo xargs -I pid /root/async-profiler/profiler.sh -d 60 -f /tmp/title.svg --title title -e itimer pid
 ```
 
-Gatling Project:
+## Gatling Project
 
 - https://github.com/gustavotemple/gatling-sbt-plugin-demo
 
@@ -72,7 +81,8 @@ Debug Gatling:
 - https://github.com/gustavotemple/gatling-sbt-plugin-demo/blob/master/src/test/scala/gatling/GatlingTest.scala#L14
 - https://stackoverflow.com/a/30620194
 
-Notes:
+## Notes
+
 - async-profiler should be run from the host by a privileged user.
 - Make sure that the target container can access `libasyncProfiler.so` by the same absolute path as on the host.
 - `/tmp` directory of Java process should be physically the same directory as `/tmp` of your shell.
