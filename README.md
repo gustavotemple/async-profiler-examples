@@ -62,6 +62,13 @@ services:
 Run:
 
 ```console
+docker swarm init
+docker stack deploy --compose-file docker-compose.yml test
+```
+
+Run:
+
+```console
 sudo ps -ef | grep "java" | grep "PreserveFramePointer" \
  | grep -v "sbt.ForkMain" | grep -v "grep" \
  | awk '{print $2}' \
