@@ -46,8 +46,7 @@ CMD ["sh", "-c", "java ${MY_ARGS} -jar my.jar"]
 version: '3'
 services:
   app:
-    build:
-      context: .
+    image: app
     ports:
       - "8080:8080"
     volumes:
