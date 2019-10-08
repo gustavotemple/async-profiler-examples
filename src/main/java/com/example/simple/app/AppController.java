@@ -13,8 +13,8 @@ public class AppController {
 
     @GetMapping
     public ResponseEntity get() {
-        for (int i = 0; i < 5000 + getRandomNumberInRange(0, 10); i++) {
-            for (int j = 0; j < 5000 + getRandomNumberInRange(0, 10); j++) {
+        for (int i = 0; i < 200 + getRandomNumberInRange(0, 10); i++) {
+            for (int j = 0; j < 200 + getRandomNumberInRange(0, 10); j++) {
 
             }
         }
