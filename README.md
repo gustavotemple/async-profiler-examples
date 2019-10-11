@@ -61,9 +61,9 @@ services:
 Run:
 
 ```console
-docker stack rm test
 docker swarm init
 docker build -t app -f Dockerfile .
+docker stack rm test
 docker stack deploy --compose-file docker-compose.yml test
 docker stats
 ```
