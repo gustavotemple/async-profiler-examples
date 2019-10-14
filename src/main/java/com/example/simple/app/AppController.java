@@ -1,5 +1,6 @@
 package com.example.simple.app;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +10,52 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
-@RequestMapping(path = "/v1/api")
+@RequestMapping(path = "/v1")
 public class AppController {
 
-    @GetMapping
-    public ResponseEntity get() {
-        for (int i = 0; i < 200 + getRandomNumberInRange1(0, 2); i++) {
-            for (int j = 0; j < 200 + getRandomNumberInRange1(0, 2); j++) {
-            }
+    private static final int LOOP = 200;
+    private static final int MIN = 0;
+    private static final int MAX = 2;
+
+    @GetMapping("/nothing")
+    public ResponseEntity nothing() {
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/sleep")
+    public ResponseEntity sleep() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/random1")
+    public ResponseEntity random1() {
+        for (int i = 0; i < LOOP + getRandomNumberInRange1(MIN, MAX); i++)
+            for (int j = 0; j < LOOP + getRandomNumberInRange1(MIN, MAX); j++) {
+            }
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/random2")
+    public ResponseEntity random2() {
+        for (int i = 0; i < LOOP + getRandomNumberInRange2(MIN, MAX); i++)
+            for (int j = 0; j < LOOP + getRandomNumberInRange2(MIN, MAX); j++) {
+            }
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/random3")
+    public ResponseEntity random3() {
+        for (int i = 0; i < LOOP + getRandomNumberInRange3(MIN, MAX); i++)
+            for (int j = 0; j < LOOP + getRandomNumberInRange3(MIN, MAX); j++) {
+            }
 
         return ResponseEntity.ok().build();
     }
