@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: my-pod
+spec:
+  shareProcessNamespace: true
+  volumes:
+  - name: tmp
+    emptyDir: {}
+  - name: profiler
+    emptyDir: {}
+  containers:
+  - name: my-app
+    image: app
+    ports:
+    - containerPort: 8080
+    imagePullPolicy: Never
+    volumeMounts:
+    - name: tmp
+      mountPath: /tmp
+    - name: profiler
+      mountPath: /root/async-profiler
+  - name: my-ubuntu
+    image: ubuntu
+    command: ["/bin/bash"]
+    volumeMounts:
+    - name: tmp
+      mountPath: /tmp
+    - name: profiler
+      mountPath: /root/async-profiler
+    securityContext:
+      capabilities:
+        add:
+        - SYS_PTRACE
+    stdin: true
+    tty: true
+
+# minikube start
+# eval $(minikube docker-env)
+# docker build -t app -f Dockerfile .
+# kubectl create -f my-pod.yaml
+# kubectl get pods
+# kubectl expose pod my-pod --type=NodePort --port=8080
+# minikube service my-pod --url
+# kubectl exec -it my-pod --container my-ubuntu -- /bin/bash
+
+# apt update
+# apt-get install build-essential git default-jdk
+# git clone https://github.com/jvm-profiling-tools/async-profiler.git
+# make -C async-profiler
+# async-profiler/profiler.sh --version
+# ps -ef 
+# async-profiler/profiler.sh -d 20 -f /tmp/title.svg --title title -e itimer 12
+
+# kubectl cp -c my-ubuntu my-pod:/tmp/title.svg /tmp/title.svg
+# kubectl delete pod my-pod
+# minikube stop
